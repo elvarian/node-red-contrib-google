@@ -22,7 +22,7 @@ module.exports = function(RED) {
             fields: "items(name,version)"
         }, function(err, data) {
             var response = [];
-            data.items.forEach(function(v) {
+            data.data.items.forEach(function(v) {
                 response.push(encodeAPI(v.name, v.version));
             });
             response.sort();
@@ -63,10 +63,10 @@ module.exports = function(RED) {
                 }
             }
 
-            processResources(data);
+            processResources(data.data);
 
             response.operations.sort();
-            response.scopes = Object.keys(data.auth.oauth2.scopes);
+            response.scopes = Object.keys(data.data.auth.oauth2.scopes);
 
             res.json(response);
 
