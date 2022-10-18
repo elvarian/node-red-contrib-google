@@ -14,7 +14,7 @@ module.exports = function(RED) {
         };
     }
 
-    var google = require('googleapis');
+    var {google} = require('googleapis');
     var discovery = google.discovery('v1');
 
     RED.httpAdmin.get('/google/apis', function(req, res) {
